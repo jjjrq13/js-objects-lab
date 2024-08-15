@@ -698,7 +698,7 @@ game.catchPokemon = function(pokemonObj){
         console.log(`Pokemon does not exist`);
         return;
     } else {
-        if (pokeballArray.quantity !== 0){
+        if (pokeballArray.quantity > 0){
             game.party.push(pokemonToFind);
             pokeballArray.quantity--;
             console.log(`Pokemon Catched: ${this.party.at(-1).name}\nPokeballs Left: ${pokeballArray.quantity}`);
