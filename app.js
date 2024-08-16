@@ -11,24 +11,24 @@ const pokemon = require('./data.js');
 //------------------------------------------------------------------------------------
 
 const game = {
-    party: [],
-    gyms: [
-      { location: "Pewter City", completed: false, difficulty: 1 },
-      { location: "Cerulean City", completed: false, difficulty: 2 },
-      { location: "Vermilion City", completed: false, difficulty: 3 },
-      { location: "Celadon City", completed: false, difficulty: 4 },
-      { location: "Fuchsia City", completed: false, difficulty: 5 },
-      { location: "Saffron City", completed: false, difficulty: 6 },
-      { location: "Cinnabar Island", completed: false, difficulty: 7 },
-      { location: "Viridian City", completed: false, difficulty: 8 },
-    ],
-    items: [
-      { name: "potion", quantity: 4 },
-      { name: "pokeball", quantity: 8 },
-      { name: "rare candy", quantity: 99 },
-    ],
-  };
-  
+  party: [],
+  gyms: [
+    { location: "Pewter City", completed: false, difficulty: 1 },
+    { location: "Cerulean City", completed: false, difficulty: 2 },
+    { location: "Vermilion City", completed: false, difficulty: 3 },
+    { location: "Celadon City", completed: false, difficulty: 4 },
+    { location: "Fuchsia City", completed: false, difficulty: 5 },
+    { location: "Saffron City", completed: false, difficulty: 6 },
+    { location: "Cinnabar Island", completed: false, difficulty: 7 },
+    { location: "Viridian City", completed: false, difficulty: 8 },
+  ],
+  items: [
+    { name: "potion", quantity: 4 },
+    { name: "pokeball", quantity: 8 },
+    { name: "rare candy", quantity: 99 },
+  ],
+};
+
 //   console.dir(pokemon, { maxArrayLength: null });
 
 //   console.log(game);
@@ -43,7 +43,7 @@ Exercise 3
 Solve Exercise 3 here:
 */
 
-game.difficulty = 'Hard';
+game.difficulty = "Hard";
 
 // console.log(game);
 
@@ -73,13 +73,13 @@ let bulbasaur;
 
 
 starterPokemons.forEach((value) => {
-    switch (value.name){
-        case 'Bulbasaur':
-            bulbasaur = value;
-            break;
-        case 'Charmander':
-            charmander = value;
-            break;
+  switch (value.name) {
+    case "Bulbasaur":
+      bulbasaur = value;
+      break;
+    case "Charmander":
+      charmander = value;
+      break;
         case 'Squirtle':
             squirtle = value;
             break;
@@ -641,10 +641,10 @@ game.catchPokemon = function(pokemonObj){
                 };
             });
         } else {
-            zeroQuantityPokeballs = 'No pokebals available!';
-        }
-    
-    //Confrim caught pokemon & decrease pokeball count
+    zeroQuantityPokeballs = "No pokebals available!";
+  }
+
+  //Confrim caught pokemon & decrease pokeball count
         if (game.party.at(-1).name === pokemonObj){
             pokeballs.quantity--;
             } else {
@@ -693,25 +693,29 @@ game.catchPokemon = function(pokemonObj){
         }
     });
 
-    //
-    if(typeof pokemonToFind === 'string'){
-        console.log(`Pokemon does not exist`);
-        return;
-    } else {
+  //
+  if (typeof pokemonToFind === 'string') {
+    console.log(`Pokemon does not exist`);
+    return;
+  } else {
         if (pokeballArray.quantity > 0){
             game.party.push(pokemonToFind);
             pokeballArray.quantity--;
-            console.log(`Pokemon Catched: ${this.party.at(-1).name}\nPokeballs Left: ${pokeballArray.quantity}`);
-            if (game.party.length >= 7){
-                let forCollections = game.party.splice(0,game.party.length - 6);
-                forCollections.forEach((element) =>{
-                    game.collection.push(element);
-                });
-            }
-        } else {
-            console.log('No pokeballs available!');
-        }
+      console.log(
+        `Pokemon Catched: ${this.party.at(-1).name}\nPokeballs Left: ${
+          pokeballArray.quantity
+        }`,
+      );
+      if (game.party.length >= 7) {
+        let forCollections = game.party.splice(0, game.party.length - 6);
+        forCollections.forEach((element) => {
+          game.collection.push(element);
+        });
+      }
+    } else {
+      console.log('No pokeballs available!');
     }
+  }
 };
 
 
@@ -744,27 +748,26 @@ Solve Exercise 21 here:
 let pokemonType = {};
 let typeArray = [];
 
-
 //Loop through pokemon type (And add values to array)
 pokemon.forEach((element) => {
-    let getType = `${element.type}`;
+  let getType = `${element.type}`;
 
-//! Line:754 I found a screenshot online after enless tries of for loops
-//? I dont understand why this works! But I know what its doing.
-    if(!typeArray.includes(getType)){
-        typeArray.push(getType);
-    };
+  //! Line:754 I found a screenshot online after enless tries of for loops
+  //? I dont understand why this works! But I know what its doing.
+  if (!typeArray.includes(getType)) {
+    typeArray.push(getType);
+  }
 });
 
 //Set keys in PokemonType SOrt Object
-typeArray.forEach((element,idx)=>{
-    let key = typeArray[idx];
-    pokemonType[key] = [];
+typeArray.forEach((element, idx) => {
+  let key = typeArray[idx];
+  pokemonType[key] = [];
 });
 
 //Sort pokemon list by type in new Object
 pokemon.forEach((element) => {
-        pokemonType[element.type].push(element);
+  pokemonType[element.type].push(element);
 });
 
 // console.log(typeArray);
